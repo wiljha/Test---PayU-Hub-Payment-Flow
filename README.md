@@ -6,6 +6,6 @@ I will present all documents, html and json code to provide request and response
 2. Creating Secure Fields pay button page
 3. Definition of tokenization, authorize, capture, charge, void, and refund.
 4. Documentation and experience notes
-5. Postman secuence diagram for an example for tw actors.
+5. Postman secuence diagram for an example for two actors.
 
  
