@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+      <title>TestPayU</title>
+      <script language="JavaScript" type="text/javascript" src="https://js.paymentsos.com/v3/latest/secure-fields.min.js"/>
+         <script>POS.setPublicKey("3940a21f-4064-400d-b89c-acf1a23ceaae");
+      </script>
+     <!--<link rel="stylesheet" type="text/css" href="assets/css/stylesheet.css">-->
+   </head>
+   <body>
+
+
+    <div class="checkout-page">
+                <form id="payment-form">
+             <div class="field">
+                <input id="cardholder-name" class="input empty" placeholder="John Doe" />
+                <label>Name</label>
+             </div>
+             <div class="field">
+                <div id="card-number" class="input empty"></div>
+                <label>Card Number</label>
+             </div>
+             <div class="field">
+                <div id="exp-date" class="input empty"></div>
+                <label>Expiration Date</label>
+             </div>
+             <button type="submit" id="pay_button">Pay $25</button>
+          </form>
+       </div>
+
+       <script>
+       const fonts = [
+         {
+           src: 'https://fonts.googleapis.com/css?family=Source+Code+Pro',
+         }
+       ]
+       const formElements = new POS.Fields("3940a21f-4064-400d-b89c-acf1a23ceaae", {
+         fonts
+       })
+
+
+       /*
+       Create an object holding additional options that you can pass to the constructor for instantiating
+       the credit card and card expiry fields.
+       There are lots of other options available that you can pass to the constructor,
+       but to keep it simple we'll just show this one object in our example.
+       */
+       const placeholders = {
+           cardNumber: '1234 1234 1234 1234',
+           expDate: 'MM / YY'
+       }
+
+       // Instantiate the fields you want to show and mount them to the DOM.
+       const cardNumber = formElements.create('cardNumber', {
+           placeholders
+       })
+       cardNumber.mount('#card-number')
+
+       const expiry = formElements.create('creditCardExpiry', {
+           placeholders
+       })
+       expiry.mount('#exp-date')
+       
+
+       /*
+       Create a token when the user submits the form, but not until we fetched the card holder's name
+       so that we can pass it in an additional data object to the createToken call.
+       */
+       document.getElementById('payment-form').addEventListener('submit', async(event) => {
+           event.preventDefault()
+           const additionalData = {
+               holder_name: document.getElementById('cardholder-name').value // This field is mandatory
+           }
+           const result = await POS.createToken(cardNumber, {
+               additionalData,
+               environment: 'test' // Set the PaymentsOS environment you're connecting to
+           })
+           console.log(`The response is ${JSON.stringify(result)}`)
+       })
+
+       </script>
+
+   </body>
