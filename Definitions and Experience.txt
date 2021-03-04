@@ -1,0 +1,10 @@
+Definitions: 
+-Tokenization: Process to protect payment information (Credit card or debit card). The objective is to create a token which contains card information, this information will not be shown at any time, in order to protect the customer's money through the transaction.
+-Authorize: It is the proces where thorough validation is carried out a hold on founds in the customer account. 
+-Capture: When the payment is authorized, it completes the transaction and founds will be sendt to the seller bank.
+-Charge: A payment flow  that transfer money from the customer account.
+-Void: Cancel an operation only when the transaction has not finalized.
+-Refund: Allows you to cancel a transfer or sale, and return the amount to the customer account
+
+
+I have developed different test using Paymentsos with different Json and HTML commands to evidence the work behind the integration of APIs. All the experience development each one of steps has helped me better understand the payment flow and its different features. Now with this excercise I have questions and curisity to research more about the different providers' characteristics and how I could take advantage to leverage outcomes for customers and the company. Even do the technical work was great, I veliebe the documentation is crucial to appropiate concepts and develop a solid knowledge base. I thak you for the oportuniity and resurces that you offered to me, those resources with my experience in architecture TI and pre-sales design could be a good combination to improve Payu custumers' experice.
